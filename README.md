@@ -42,4 +42,4 @@ java -jar target/*.jar # JAR starten
 
 ### CI
 
-![CI Status](https://github.com/bjoern64234/java-basics-projekt.git/actions/workflows/ci.yml/badge.svg)
+![CI Status](https://github.com/bjoern64234/java-basics-projekt/actions/workflows/ci.yml/badge.svg)
