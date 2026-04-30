@@ -51,6 +51,27 @@ class PasswordValidatorTest {
         assertTrue(result);
     }
 
+    /** Run tests for containsDigit **/
+    @Test
+    void containsDigit_isTrueWhenPasswordHasOnlyOneDigit() {
+        // Given
+        String password = "fdsfdfs3dfdfds";
+        // When
+        boolean result = PasswordValidator.containsDigit(password);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void containsDigit_isTrueWhenPasswordHasOnlyDigits() {
+        // Given
+        String password = "432423432432";
+        // When
+        boolean result = PasswordValidator.containsDigit(password);
+        // Then
+        assertTrue(result);
+    }
+
     @Test
     void containsDigit_isTrueWhenPasswordHasMinOneDigit() {
         // Given
@@ -67,6 +88,47 @@ class PasswordValidatorTest {
         String password = "sadsdawwqds";
         // When
         boolean result = PasswordValidator.containsDigit(password);
+        // Then
+        assertFalse(result);
+    }
+
+    /** Run tests for containsUpperAndLower **/
+    @Test
+    void containsUpperAndLower_isTrueWhenUpperAndLower() {
+        // Given
+        String password = "KSDLdwdw23";
+        // When
+        boolean result = PasswordValidator.containsUpperAndLower(password);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void containsUpperAndLower_isFalseWhenOnlyUppercase() {
+        // Given
+        String password = "IEUDJWODPWMMCS";
+        // When
+        boolean result = PasswordValidator.containsUpperAndLower(password);
+        // Then
+        assertFalse(result);
+    }
+
+    @Test
+    void containsUpperAndLower_isFalseWhenOnlyLowercase() {
+        // Given
+        String password = "sadsdawwqds";
+        // When
+        boolean result = PasswordValidator.containsUpperAndLower(password);
+        // Then
+        assertFalse(result);
+    }
+
+    @Test
+    void containsUpperAndLower_isFalseWhenOnlyOneLetter() {
+        // Given
+        String password = "H";
+        // When
+        boolean result = PasswordValidator.containsUpperAndLower(password);
         // Then
         assertFalse(result);
     }
