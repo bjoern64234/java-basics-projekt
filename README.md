@@ -38,7 +38,7 @@ Every password **must** fulfil all the following requirements:
 mvn clean verify       # kompilieren + alle Tests ausführen
 mvn package            # JAR bauen → target/*.jar
 java -jar target/*.jar # JAR starten
-` `` 
+``` 
 
 ### CI
 
