@@ -1,7 +1,14 @@
-import java.lang.reflect.Array;
 import java.util.Scanner;
+import java.util.Set;
 
 public final class PasswordValidator {
+
+    private static final Set<String> forbidden = Set.of(
+            "password",
+            "Passwort1",
+            "12345678",
+            "Aa345678"
+    );
 
     static void main() {
 
@@ -60,6 +67,12 @@ public final class PasswordValidator {
     }
 
     public static boolean isCommonPassword(String password) {
+
+        for (String forbidden : forbidden) {
+            if (password.equalsIgnoreCase(forbidden)) {
+                return true;
+            }
+        }
         return false;
     }
 }
