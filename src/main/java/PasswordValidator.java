@@ -10,6 +10,8 @@ public final class PasswordValidator {
             "Aa345678"
     );
 
+    private static final String specialCharString = "!@#$%^&*()-_+=?.,;:";
+
     static void main() {
 
         Scanner input = new Scanner(System.in);
@@ -76,9 +78,24 @@ public final class PasswordValidator {
         return false;
     }
 
+    public static boolean containsSpecialChar(String password, String specialCharString) {
+        char[] specialChars = specialCharString.toCharArray();
+        char[] letters = password.toCharArray();
+
+        for (char letter : letters) {
+            for (char specialChar : specialChars) {
+                if (letter == specialChar) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     public static boolean isValid(String password) {
         String p = password.trim();
 
-        return hasMinLength(p) && containsDigit(p) && containsUpperAndLower(p) && !isCommonPassword(p);
+        return hasMinLength(p) && containsDigit(p) && containsUpperAndLower(p) && !isCommonPassword(p) && containsSpecialChar(p, specialCharString);
     }
 }

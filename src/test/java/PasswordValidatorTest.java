@@ -151,9 +151,9 @@ class PasswordValidatorTest {
     /** Run tests for isValid **/
     @ParameterizedTest
     @CsvSource({
-            "Abc1defg",
-            "Abcdef1g",
-            "Smdj3mfkr6"
+            "Abc1defg#",
+            "Abcdef1g!",
+            "Smdj3mfkQr&"
     })
     void isValid_isTrueForGivenPasswords(String password) {
         // When
@@ -175,6 +175,34 @@ class PasswordValidatorTest {
     void isValid_isTrueForGivenWrongPasswords(String password) {
         // When
         boolean result = PasswordValidator.isValid(password);
+        // Then
+        assertFalse(result);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "@Abc1def",
+            "Abcde$%fgh",
+            "abc$ds2fg1",
+            "ABCD&FG1"
+    })
+    void containsSpecialChar_isTrueWhenASpecialCharIsGiven(String password) {
+        // When
+        boolean result = PasswordValidator.containsSpecialChar(password, "!@#$%^&*()-_+=?.,;:");
+        // Then
+        assertTrue(result);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "jAbc1def",
+            "Abcde67fgh",
+            "abcWds2fg1",
+            "ABCDTFG1"
+    })
+    void containsSpecialChar_isFalseWhenASpecialCharIsNotGiven(String password) {
+        // When
+        boolean result = PasswordValidator.containsSpecialChar(password, "!@#$%^&*()-_+=?.,;:");
         // Then
         assertFalse(result);
     }
