@@ -10,6 +10,8 @@ public final class PasswordValidator {
             "Aa345678"
     );
 
+    private static final String SpecialChar = "!@#$%^&*()-_+=?.,;:";
+
     static void main() {
 
         Scanner input = new Scanner(System.in);
@@ -73,6 +75,10 @@ public final class PasswordValidator {
                 return true;
             }
         }
+        return false;
+    }
+
+    public static boolean containsSpecialChar(String password, String SpecialChar) {
         return false;
     }
 

@@ -178,4 +178,18 @@ class PasswordValidatorTest {
         // Then
         assertFalse(result);
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "@Abc1def",
+            "Abcde$%fgh",
+            "abc$ds2fg1",
+            "ABCD&FG1"
+    })
+    void containsSpecialChar_isTrueWhenASpecialCharIsGiven(String password) {
+        // When
+        boolean result = PasswordValidator.containsSpecialChar(password, "!@#$%^&*()-_+=?.,;:");
+        // Then
+        assertTrue(result);
+    }
 }
