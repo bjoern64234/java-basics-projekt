@@ -132,4 +132,19 @@ class PasswordValidatorTest {
         // Then
         assertFalse(result);
     }
+
+    /** Run tests for isCommonPassword **/
+    @ParameterizedTest
+    @CsvSource({
+            "password",
+            "Passwort1",
+            "12345678",
+            "Aa345678"
+    })
+    void isCommonPassword_isTrueWhenForbiddenPassword(String forbidden) {
+        // When
+        boolean result = PasswordValidator.isCommonPassword(forbidden);
+        // Then
+        assertTrue(result);
+    }
 }

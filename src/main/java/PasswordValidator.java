@@ -58,4 +58,8 @@ public final class PasswordValidator {
 
         return isUpperCaseLetter && isLowerCaseLetter;
     }
+
+    public static boolean isCommonPassword(String password) {
+        return false;
+    }
 }
