@@ -11,6 +11,8 @@ public final class PasswordValidator {
     );
 
     private static final String specialCharString = "!@#$%^&*()-_+=?.,;:";
+    private static final String lettersCharString = "abcdefghijklmnopqrstuvwxyz";
+    private static final String numbersCharString = "0123456789";
 
     static void main() {
 
@@ -23,6 +25,9 @@ public final class PasswordValidator {
 
         boolean containsDigit = containsDigit(password);
         System.out.println(containsDigit);
+
+        String securePassword = generateSecurePassword(8);
+        System.out.println(securePassword);
     }
 
     public static boolean hasMinLength(String password) {
@@ -97,5 +102,36 @@ public final class PasswordValidator {
         String p = password.trim();
 
         return hasMinLength(p) && containsDigit(p) && containsUpperAndLower(p) && !isCommonPassword(p) && containsSpecialChar(p, specialCharString);
+    }
+
+    public static String generateSecurePassword(int length) {
+        boolean isValid = false;
+        String securePassword = "";
+        // Set output to input length
+        char[] output = new char[length];
+        // Get all chars
+        char[] specialChars = specialCharString.toCharArray();
+        char[] lowerLettersChars = lettersCharString.toCharArray();
+        char[] upperLettersChars = lettersCharString.toUpperCase().toCharArray();
+        char[] numberChars = numbersCharString.toCharArray();
+        // Set char array of available charSets
+        char[][] charSets = {specialChars, lowerLettersChars, upperLettersChars, numberChars};
+
+        // Generate securePassword since it is not valid
+        while(!isValid) {
+            for (int j = 0; j < length; j++) {
+                // Select random charSet
+                int randomCharset = (int) (Math.random() * charSets.length);
+                char[] currentCharSet = charSets[randomCharset];
+                // Select random char from charSet
+                int randomChar = (int) (Math.random() * currentCharSet.length);
+                output[j] = currentCharSet[randomChar];
+            }
+
+            securePassword = new String(output);
+            isValid = isValid(securePassword);
+        }
+
+        return securePassword;
     }
 }

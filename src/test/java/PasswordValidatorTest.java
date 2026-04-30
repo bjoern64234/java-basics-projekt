@@ -206,4 +206,14 @@ class PasswordValidatorTest {
         // Then
         assertFalse(result);
     }
+
+    @Test
+    void generateSecurePassword_isTrueWhenGeneratedPasswordIsValid() {
+        // Given
+        int length = 8;
+        // When
+        String securePassword = PasswordValidator.generateSecurePassword(length);
+        boolean expected = PasswordValidator.isValid(securePassword);
+        assertTrue(expected);
+    }
 }
