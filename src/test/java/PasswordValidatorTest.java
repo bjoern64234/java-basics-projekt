@@ -147,4 +147,35 @@ class PasswordValidatorTest {
         // Then
         assertTrue(result);
     }
+
+    /** Run tests for isValid **/
+    @ParameterizedTest
+    @CsvSource({
+            "Abc1defg",
+            "Abcdef1g",
+            "Smdj3mfkr6"
+    })
+    void isValid_isTrueForGivenPasswords(String password) {
+        // When
+        boolean result = PasswordValidator.isValid(password);
+        // Then
+        assertTrue(result);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "Abc1def",
+            "Abcdefgh",
+            "abcdefg1",
+            "ABCDEFG1",
+            "Passwort1",
+            "mcdlspapc",
+            "ASLKSAJEKC"
+    })
+    void isValid_isTrueForGivenWrongPasswords(String password) {
+        // When
+        boolean result = PasswordValidator.isValid(password);
+        // Then
+        assertFalse(result);
+    }
 }

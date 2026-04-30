@@ -75,4 +75,10 @@ public final class PasswordValidator {
         }
         return false;
     }
+
+    public static boolean isValid(String password) {
+        String p = password.trim();
+
+        return hasMinLength(p) && containsDigit(p) && containsUpperAndLower(p) && !isCommonPassword(p);
+    }
 }
