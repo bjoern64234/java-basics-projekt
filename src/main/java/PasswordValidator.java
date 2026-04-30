@@ -10,7 +10,7 @@ public final class PasswordValidator {
             "Aa345678"
     );
 
-    private static final String SpecialChar = "!@#$%^&*()-_+=?.,;:";
+    private static final String specialCharString = "!@#$%^&*()-_+=?.,;:";
 
     static void main() {
 
@@ -78,7 +78,18 @@ public final class PasswordValidator {
         return false;
     }
 
-    public static boolean containsSpecialChar(String password, String SpecialChar) {
+    public static boolean containsSpecialChar(String password, String specialCharString) {
+        char[] specialChars = specialCharString.toCharArray();
+        char[] letters = password.toCharArray();
+
+        for (char letter : letters) {
+            for (char specialChar : specialChars) {
+                if (letter == specialChar) {
+                    return true;
+                }
+            }
+        }
+
         return false;
     }
 
