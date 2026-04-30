@@ -96,6 +96,6 @@ public final class PasswordValidator {
     public static boolean isValid(String password) {
         String p = password.trim();
 
-        return hasMinLength(p) && containsDigit(p) && containsUpperAndLower(p) && !isCommonPassword(p);
+        return hasMinLength(p) && containsDigit(p) && containsUpperAndLower(p) && !isCommonPassword(p) && containsSpecialChar(p, specialCharString);
     }
 }

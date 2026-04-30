@@ -151,9 +151,9 @@ class PasswordValidatorTest {
     /** Run tests for isValid **/
     @ParameterizedTest
     @CsvSource({
-            "Abc1defg",
-            "Abcdef1g",
-            "Smdj3mfkr6"
+            "Abc1defg#",
+            "Abcdef1g!",
+            "Smdj3mfkQr&"
     })
     void isValid_isTrueForGivenPasswords(String password) {
         // When
