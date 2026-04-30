@@ -51,4 +51,23 @@ class PasswordValidatorTest {
         assertTrue(result);
     }
 
+    @Test
+    void containsDigit_isTrueWhenPasswordHasMinOneDigit() {
+        // Given
+        String password = "sdf2cd1dsaw";
+        // When
+        boolean result = PasswordValidator.containsDigit(password);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void containsDigit_isFalseWhenPasswordHasMinOneDigit() {
+        // Given
+        String password = "sadsdawwqds";
+        // When
+        boolean result = PasswordValidator.containsDigit(password);
+        // Then
+        assertFalse(result);
+    }
 }

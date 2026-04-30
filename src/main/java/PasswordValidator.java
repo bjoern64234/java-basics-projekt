@@ -8,8 +8,11 @@ public final class PasswordValidator {
         System.out.println("Please enter your password:");
         String password = input.nextLine();
 
-        boolean isValid = hasMinLength(password);
-        System.out.println(isValid);
+        boolean hasMinLength = hasMinLength(password);
+        System.out.println(hasMinLength);
+
+        boolean containsDigit = containsDigit(password);
+        System.out.println(containsDigit);
     }
 
     public static boolean hasMinLength(String password) {
@@ -18,5 +21,9 @@ public final class PasswordValidator {
         }
 
         return password.length() >= 8;
+    }
+
+    public static boolean containsDigit(String password) {
+        return false;
     }
 }
